@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/LibraryHelp/src/libraryhelp/Main.java</file>
-            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/LibraryHelp/src/pessoas/Acesso.java</file>
+            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/src/pessoas/Usuario.java</file>
+            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/src/pessoas/Pessoa.java</file>
+            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/src/pessoas/Administrador.java</file>
+            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/src/pessoas/Endereco.java</file>
+            <file>file:/home/tmarco/Documentos/Projeto-Final-POO/5.%20Sistema%20LibraryHelp/src/pessoas/Funcionario.java</file>
         </group>
     </open-files>
 </project-private>

@@ -2,10 +2,26 @@ package pessoas;
 public abstract class Pessoa {
     private int id;
     private String nome;
-    private int idade;
+    int idade;
     private Endereco endereco;
     private String email;
-
+    
+    /*Construtor com menos informações*/
+    public Pessoa(int id, String nome, int idade){
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+    }
+    
+    /*Construtor com todas as informações*/
+    public Pessoa(int id, String nome, int idade, Endereco endereco, String email){
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+        this.endereco = endereco;
+        this.email = email;
+    }
+    
     public int getId() {
         return id;
     }
