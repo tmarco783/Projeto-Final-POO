@@ -29,19 +29,19 @@ public class Funcionario extends Pessoa{
         this.acesso = acesso;
     }
     
-    public void cadastrarFuncionario() {
+    public void cadastrarFuncionario(Administrador adm) {
         
     }
     
-    public void alterarRegistroFuncionario() {
+    public void alterarRegistroFuncionario(Administrador adm) {
     
     }
     
-    public void buscarFuncionario() {
+    public void buscarFuncionario(Administrador adm) {
         
     }
     
-    public void exlcuirFuncionario() {
+    public void exlcuirFuncionario(Administrador adm) {
         
     }
     
