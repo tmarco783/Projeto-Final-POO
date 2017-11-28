@@ -39,15 +39,9 @@ public class Administrador extends Pessoa{
         if(!existe(id)){
            System.out.println("O ID informado não existe.");
            return;
-        }else{
-            int indice = 0;
-            for(int i = 0; i < listaAdm.size(); i++){
-                if(listaAdm.get(i).getId() == id){
-                    indice = i;
-                    break;
-                }
-            }
         }
+        int posicao = obterPosicao(id);
+        
         
         /*
         Executar a
@@ -56,11 +50,25 @@ public class Administrador extends Pessoa{
     }
     
     public void buscarAdministrador(int id) {
+        if(!existe(id)){
+           System.out.println("O ID informado não existe.");
+           return;
+        }
+        int posicao = obterPosicao(id);
+        System.out.println("Administrador encontrado.");
+        System.out.println("== Informações do Administrador ==");
+        System.out.println(listaAdm.get(posicao).toString());
+        
+        
         
     }
     
+    
     public void excluirAdministrador(int id) {
+        int posicao = obterPosicao(id);
         
+        listaAdm.remove(posicao);
+        System.out.println("Administrador removido com sucesso!");
     }
     
     public boolean existe(int id){
@@ -78,6 +86,17 @@ public class Administrador extends Pessoa{
         }else{
             return false;
         }
+    }
+    
+    public int obterPosicao(int id) {
+        int indice = 0;
+        for(int i = 0; i < listaAdm.size(); i++){
+            if(listaAdm.get(i).getId() == id){
+                indice = i;
+                break;
+            }
+        }
+        return indice;
     }
     
     @Override

@@ -46,8 +46,8 @@ public abstract class Pessoa {
         this.idade = idade;
     }
 
-    public String getEndereco() {
-        return endereco.toString();
+    public Endereco getEndereco() {
+        return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
