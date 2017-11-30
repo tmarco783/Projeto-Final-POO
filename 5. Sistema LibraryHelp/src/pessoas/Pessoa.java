@@ -1,5 +1,9 @@
 package pessoas;
-public abstract class Pessoa {
+
+import java.io.*;
+
+/*Serializable permite gravar aquivos utilizando o pacote 'java.io'*/
+public abstract class Pessoa implements Serializable{
     private int id;
     private String nome;
     int idade;
@@ -61,6 +65,8 @@ public abstract class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
     
     
 }

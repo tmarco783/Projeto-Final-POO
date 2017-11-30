@@ -29,7 +29,6 @@ public class Administrador extends Pessoa {
     /*Método que cadastra um administrador (esboço inicial)*/
     public void cadastrarAdministrador(Administrador adm) {
         listaAdm.add(adm); /*Adicionando o administrador ao ArrayList*/
-        
     }
     
     public void alterarCadastroAdministrador(int id) {
@@ -74,6 +73,11 @@ public class Administrador extends Pessoa {
     
     
     public void excluirAdministrador(int id) {
+        if(!existe(id)){
+           System.out.println("O ID informado não existe.");
+           System.out.println("===========================");
+           return;
+        }
         int posicao = obterPosicaoArray(id);
         
         listaAdm.remove(posicao);

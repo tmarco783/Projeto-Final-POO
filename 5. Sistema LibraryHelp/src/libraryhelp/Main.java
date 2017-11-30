@@ -1,5 +1,5 @@
 package libraryhelp;
-import pessoas.*;
+import pessoas.*; /*Importando o pacote 'pessoas' e todas as suas classes*/
 public class Main {
     public static void main(String[] args) {
         
@@ -22,5 +22,7 @@ public class Main {
         adm1.buscarAdministrador(adm1.getId());
         
     }
+    
+    
     
 }
