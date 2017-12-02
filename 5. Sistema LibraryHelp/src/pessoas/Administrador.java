@@ -1,34 +1,30 @@
 package pessoas;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Administrador extends Pessoa {
-    private Acesso acesso;
+public class Administrador extends Pessoa implements Serializable{
     private ArrayList <Administrador> listaAdm = new ArrayList <>();
     
     /*Construtor com menos informações*/
-    public Administrador(int id, String nome, int idade, Acesso acesso) {
+    public Administrador(int id, String nome, int idade) {
         super(id, nome, idade);
-        this.acesso = acesso;
     }
     
     /*Construtor com todas as informações*/
-    public Administrador(int id, String nome, int idade, Endereco endereco, String email, Acesso acesso) {
+    public Administrador(int id, String nome, int idade, Endereco endereco, String email) {
         super(id, nome, idade, endereco, email);
-        this.acesso = acesso;
-    }
-
-    public Acesso getAcesso() {
-        return acesso;
-    }
-    
-    public void setAcesso(Acesso acesso) {
-        this.acesso = acesso;
     }
     
     /*Método que cadastra um administrador (esboço inicial)*/
     public void cadastrarAdministrador(Administrador adm) {
         listaAdm.add(adm); /*Adicionando o administrador ao ArrayList*/
+        gravaDados(adm);
     }
     
     public void alterarCadastroAdministrador(int id) {
@@ -110,6 +106,23 @@ public class Administrador extends Pessoa {
             }
         }
         return indice;
+    }
+    
+    public void gravaDados(Administrador adm) {
+        
+        try{
+            ObjectOutputStream dadosAdm = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("dados_adm.txt")));			
+            dadosAdm.writeObject(adm);
+            dadosAdm.close();
+            
+            if(dadosAdm != null){
+                System.out.println("Dados salvos com sucesso!");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
     }
     
     @Override
