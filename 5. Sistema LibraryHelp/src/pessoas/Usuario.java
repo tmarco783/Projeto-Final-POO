@@ -4,17 +4,16 @@ import java.util.Scanner;
 
 public class Usuario extends Pessoa{
     private int matricula;
-    private Acesso acesso;
+    private String login;
+    private int senha;
     private ArrayList <Usuario> listaUser = new ArrayList <>();
 
     public Usuario(int id, String nome, int idade, Acesso acesso) {
         super(id, nome, idade);
-        this.acesso = acesso;
     }
     
     public Usuario(int id, String nome, int idade, Endereco endereco, String email, Acesso acesso) {
         super(id, nome, idade, endereco, email);
-        this.acesso = acesso;
     }
 
     public int getMatricula() {
@@ -23,14 +22,6 @@ public class Usuario extends Pessoa{
 
     public void setMatricula(int matricula) {
         this.matricula = matricula;
-    }
-
-    public Acesso getAcesso() {
-        return acesso;
-    }
-
-    public void setAcesso(Acesso acesso) {
-        this.acesso = acesso;
     }
     
     public void cadastrarUsuario(Usuario user) {

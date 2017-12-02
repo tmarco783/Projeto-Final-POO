@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
         
         /*Alguns testes de administrador na classe principal*/
-       
+       Funcionario func1 = new Funcionario(1598, "Aline", 25);
+       func1.cadastrarFuncionario(func1); 
         
         
     }

@@ -1,5 +1,6 @@
 package pessoas;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -8,17 +9,16 @@ import java.util.Scanner;
 
 public class Funcionario extends Pessoa{
     private int matricula;
-    private Acesso acesso;
+    private String login;
+    private int senha;
     private ArrayList <Funcionario> listaFunc = new ArrayList <>();
     
-    public Funcionario(int id, String nome, int idade, Acesso acesso) {
+    public Funcionario(int id, String nome, int idade) {
         super(id, nome, idade);
-        this.acesso = acesso;
     }
     
-    public Funcionario(int id, String nome, int idade, Endereco endereco, String email, Acesso acesso){
+    public Funcionario(int id, String nome, int idade, Endereco endereco, String email){
         super(id, nome, idade, endereco, email);
-        this.acesso = acesso;
     }
 
     public int getMatricula() {
@@ -28,17 +28,10 @@ public class Funcionario extends Pessoa{
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
-
-    public Acesso getAcesso() {
-        return acesso;
-    }
-
-    public void setAcesso(Acesso acesso) {
-        this.acesso = acesso;
-    }
     
     public void cadastrarFuncionario(Funcionario func) {
         listaFunc.add(func);
+        gravaDados(func);
     }
     
     public void alterarRegistroFuncionario(int id) {
@@ -120,17 +113,17 @@ public class Funcionario extends Pessoa{
     }
     
     public void gravaDados(Funcionario func) {
-        
+        File dadosFunc = new File("dados_func.txt");
         try{
-            ObjectOutputStream dadosFunc = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("dados_func.txt")));			
-            dadosFunc.writeObject(func);
-            dadosFunc.close();
-            
-            if(dadosFunc != null){
-                System.out.println("Dados salvos com sucesso!");
-            }
-        }catch(IOException e){
-            e.printStackTrace();
+            dadosFunc.createNewFile();
+            dadosFunc.canWrite();
+        
+        
+        if(dadosFunc != null){
+            System.out.println("Dados salvos com sucesso!");
+        }
+        }catch(IOException ex){
+            ex.printStackTrace();
         }
     }
     
