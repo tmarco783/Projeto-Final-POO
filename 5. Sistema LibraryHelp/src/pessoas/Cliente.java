@@ -3,6 +3,7 @@ package pessoas;
  *
  * @author Mathews
  */
-public class Funcionario extends Pessoa {
+public class Cliente {
+    private String telefone;
     private Acesso acesso;
 }
