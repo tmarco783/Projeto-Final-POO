@@ -1,7 +1,7 @@
 package ParteGrafica.Codigos;
 
 /**
- *
+ *Classe que renderiza uma janela e a retorna.
  * @author Mathews
  */
 import java.awt.*;
@@ -22,7 +22,7 @@ public class ComboBoxRenderer extends BasicComboBoxRenderer{
 	 * mostra um item nao selecionavel quando nao ha nenhum item selecionado
 	 */
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-			boolean cellHasFocus) {
+                                                      boolean cellHasFocus) {
 		super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
 		if (value == null)

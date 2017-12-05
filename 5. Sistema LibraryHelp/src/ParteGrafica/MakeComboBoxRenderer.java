@@ -1,7 +1,7 @@
 package ParteGrafica;
 
 /**
- *
+ *Classe que renderiza uma janela e a retorna.
  * @author Mathews
  */
 
@@ -18,8 +18,9 @@ public class MakeComboBoxRenderer extends BasicComboBoxRenderer{
 		this.visual = visual;
 	}
 
-	/*
-	 * mostra um item nao selecionavel quando nao ha nenhum item selecionado
+	/**
+	 * Método que mostra um item nao selecionavel quando nao ha nenhum item selecionado
+         * 
 	 */
     @Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,

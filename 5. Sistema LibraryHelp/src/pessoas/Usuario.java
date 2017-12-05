@@ -3,17 +3,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usuario extends Pessoa{
+    private int id;
     private int matricula;
     private String login;
     private int senha;
     private ArrayList <Usuario> listaUser = new ArrayList <>();
 
-    public Usuario(int id, String nome, int idade, Acesso acesso) {
+    /*public Usuario(int id, String nome, int idade, Acesso acesso) {
         super(id, nome, idade);
+    }*/
+    
+    /*public Usuario(int id, String nome, int idade, Endereco endereco, String email, Acesso acesso) {
+        super(id, nome, idade, endereco, email);
+    }*/
+    
+    public int getId(){
+        return id;
     }
     
-    public Usuario(int id, String nome, int idade, Endereco endereco, String email, Acesso acesso) {
-        super(id, nome, idade, endereco, email);
+    public void setId(int id){
+        this.id = id;
     }
 
     public int getMatricula() {
@@ -43,13 +52,13 @@ public class Usuario extends Pessoa{
         System.out.print("Entre com o novo ID do usuário: " );
         novoId = in.nextInt();
         in.nextLine();
-        listaUser.get(posicao).setId(novoId);
+        /*listaUser.get(posicao).setId(novoId);*/
         System.out.print("Entre com o novo nome do usuário: ");
         novoNome = in.nextLine();
-        listaUser.get(posicao).setNome(novoNome);
+        /*listaUser.get(posicao).setNome(novoNome);*/
         System.out.print("Entre com a nova idade do usuário: ");
         novaIdade = in.nextInt();
-        listaUser.get(posicao).setIdade(novaIdade); 
+        /*listaUser.get(posicao).setIdade(novaIdade);*/ 
         System.out.println("O usuário foi atualizado com sucesso!");
     }
     
@@ -106,10 +115,5 @@ public class Usuario extends Pessoa{
         return indice;
     }
     
-    @Override
-    public String toString() {
-        return "ID: " + this.getId() + "Matrícula: " + this.getMatricula() + " | Nome: " + this.getNome() + 
-               " | Idade: " + this.getIdade() + "\n Endereço: " + this.getEndereco() +
-               " | E-mail: " + this.getEmail();
-    }
+    
 }

@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         
         /*Alguns testes de funcionário na classe principal*/
-       Funcionario func1 = new Funcionario(1598, "Aline", 25);
-       func1.gravaDados(func1);
+       /*Funcionario func1 = new Funcionario(1598, "Aline", 25);
+       func1.gravaDados(func1);*/
         
         
     }

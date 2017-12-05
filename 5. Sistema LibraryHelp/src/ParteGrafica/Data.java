@@ -1,6 +1,7 @@
 package ParteGrafica;
 /**
- *
+ *Classe usada para representar uma data 
+ * contendo dia, mês e ano.
  * @author Mathews
  */
 public class Data {

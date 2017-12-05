@@ -1,7 +1,7 @@
 package ParteGrafica;
 
 /**
- *
+ *Classe abstrata Pessoa
  * @author Mathews
  */
 public abstract class Pessoa {
