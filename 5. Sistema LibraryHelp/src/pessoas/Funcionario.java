@@ -113,17 +113,18 @@ public class Funcionario extends Pessoa{
     }
     
     public void gravaDados(Funcionario func) {
-        File dadosFunc = new File("dados_func.txt");
         try{
-            dadosFunc.createNewFile();
-            dadosFunc.canWrite();
-        
-        
-        if(dadosFunc != null){
-            System.out.println("Dados salvos com sucesso!");
-        }
-        }catch(IOException ex){
-            ex.printStackTrace();
+            FileOutputStream fx = new FileOutputStream("dados_func.txt");
+            ObjectOutputStream dadosFunc = new ObjectOutputStream(fx);
+            dadosFunc.writeObject(func);
+            if(dadosFunc != null){
+                System.out.println("Dados salvos com sucesso!");
+            }
+            
+            fx.close();
+            dadosFunc.close();
+            
+        }catch(IOException e){
         }
     }
     
