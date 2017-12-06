@@ -100,7 +100,7 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
         jLabelTelefone.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTelefone.setText("Telefone");
         getContentPane().add(jLabelTelefone);
-        jLabelTelefone.setBounds(30, 210, 70, 17);
+        jLabelTelefone.setBounds(30, 210, 62, 17);
 
         try {
             jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
@@ -128,7 +128,7 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
         jLabelEmail.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmail.setText("Email");
         getContentPane().add(jLabelEmail);
-        jLabelEmail.setBounds(30, 330, 40, 17);
+        jLabelEmail.setBounds(30, 330, 37, 17);
         getContentPane().add(jTextFieldEmail);
         jTextFieldEmail.setBounds(30, 350, 320, 30);
 
@@ -145,11 +145,6 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
 
         jComboBoxDia.setEditable(true);
         jComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBoxDia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxDiaActionPerformed(evt);
-            }
-        });
         getContentPane().add(jComboBoxDia);
         jComboBoxDia.setBounds(70, 120, 60, 30);
 
@@ -157,7 +152,7 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
         jLabelDia.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDia.setText("Dia");
         getContentPane().add(jLabelDia);
-        jLabelDia.setBounds(40, 120, 24, 30);
+        jLabelDia.setBounds(40, 120, 22, 30);
 
         jComboBoxMes.setEditable(true);
         jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
@@ -184,7 +179,7 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
         jLabelAno.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAno.setText("Ano");
         getContentPane().add(jLabelAno);
-        jLabelAno.setBounds(280, 117, 31, 30);
+        jLabelAno.setBounds(280, 117, 27, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -202,7 +197,7 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
         String telefone;
         String celular;
         String sexo;
-        int dia, mes, ano;
+        int dia, mes, ano, aux;
         
         try{
             nome = getTextFieldData(jTextFieldNome);
@@ -214,14 +209,23 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
             mes = Integer.parseInt(getComboBoxData(jComboBoxMes));
             ano = Integer.parseInt(getComboBoxData(jComboBoxAno));
             
+            Data auxDate = new Data();
+            auxDate.setDia(dia);
+            auxDate.setMes(mes);
+            auxDate.setAno(ano);
+            
             biblioteca.clientes.get(biblioteca.clientes.size() - 1).nome = nome;
             biblioteca.clientes.get(biblioteca.clientes.size() - 1).sexo = sexo;
             biblioteca.clientes.get(biblioteca.clientes.size() - 1).setEmail(email);
             biblioteca.clientes.get(biblioteca.clientes.size() - 1).telefoneFixo = telefone;
             biblioteca.clientes.get(biblioteca.clientes.size() - 1).telefoneCelular = celular;
-            biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setDia(dia);
-            biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setMes(mes);
-            biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setAno(ano);
+            
+            biblioteca.salvarDadosCliente(biblioteca.clientes.get(biblioteca.clientes.size() - 1).getAcesso(),
+            nome, sexo, email, telefone, celular, auxDate);
+            
+            //biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setDia(dia);
+            //biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setMes(mes);
+            //biblioteca.clientes.get(biblioteca.clientes.size() - 1).dataNasc.setAno(ano);
             
             mensagemSucesso("CADASTRO REALIZADO COM SUCESSO!!!");
             dispose();
@@ -235,10 +239,6 @@ public class TelaFormularioCadastroCliente extends javax.swing.JFrame {
     private void jComboBoxAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAnoActionPerformed
  
     }//GEN-LAST:event_jComboBoxAnoActionPerformed
-
-    private void jComboBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxDiaActionPerformed
     
      public String getTextFieldData(JTextField jtext) throws FaltamDadosException {
 		String s = jtext.getText();

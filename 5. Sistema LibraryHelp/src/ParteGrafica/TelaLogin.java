@@ -5,6 +5,11 @@
  */
 package ParteGrafica;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Mathews
@@ -42,28 +47,44 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelLogin.setText("Login:");
         getContentPane().add(jLabelLogin);
-        jLabelLogin.setBounds(360, 190, 50, 17);
+        jLabelLogin.setBounds(360, 190, 50, 30);
+
+        jTextFieldLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextFieldLogin);
-        jTextFieldLogin.setBounds(410, 190, 250, 20);
+        jTextFieldLogin.setBounds(410, 190, 250, 30);
 
         jLabelSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(360, 230, 50, 17);
+        jLabelSenha.setBounds(360, 230, 50, 30);
         getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(410, 230, 250, 20);
+        jPasswordFieldSenha.setBounds(410, 230, 250, 30);
 
         jButtonSair.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(580, 290, 80, 23);
+        jButtonSair.setBounds(580, 290, 80, 30);
 
         jButtonEntrar.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jButtonEntrar.setText("Entrar");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonEntrar);
-        jButtonEntrar.setBounds(490, 290, 80, 23);
+        jButtonEntrar.setBounds(490, 290, 80, 30);
 
-        jLabelFundoTelaLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1.png"))); // NOI18N
+        jLabelFundoTelaLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1.jpg"))); // NOI18N
         jLabelFundoTelaLogin.setLabelFor(jLabelLogin);
         jLabelFundoTelaLogin.setMaximumSize(new java.awt.Dimension(430, 298));
         jLabelFundoTelaLogin.setMinimumSize(new java.awt.Dimension(430, 298));
@@ -74,6 +95,66 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSairActionPerformed
+    
+    Biblioteca biblioteca = Biblioteca.getInstancia();
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        // TODO add your handling code here:
+        String login;
+        String senha;
+        int aux;
+        
+            try{
+                login = getTextFieldData(jTextFieldLogin);
+                senha = getTextFieldData(jPasswordFieldSenha);
+                
+                aux = biblioteca.chegarUsuario(login, senha);
+                
+            switch (aux) {
+                case 1:
+                    TelaInicialFuncionario  telaInicialFuncionario = new TelaInicialFuncionario();
+                    telaInicialFuncionario.setVisible(true);
+                    dispose();
+                    break;
+                case 2:
+                    TelaInicialCliente telaInicialCliente = new TelaInicialCliente();
+                    telaInicialCliente.setVisible(true);
+                    dispose();
+                    break;
+                default:
+                    mensagemWarning("USUÁRIO OU SENHA INCORRETOS");
+                    break;
+            }
+            
+            }catch (FaltamDadosException ex){
+                ex.View();
+                //Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    public String getTextFieldData(JTextField jtext) throws FaltamDadosException {
+		String s = jtext.getText();
+		if (s.equals(""))
+			throw new FaltamDadosException("Preencha todos os campos!");
+		return s;
+    }
+    
+    
+    private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldLoginActionPerformed
+
+    public void mensagemWarning(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem, "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */

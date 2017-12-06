@@ -1,10 +1,12 @@
 package ParteGrafica;
+
+import java.io.Serializable;
+
 /**
- *Classe usada para representar uma data 
- * contendo dia, mês e ano.
+ *
  * @author Mathews
  */
-public class Data {
+public class Data implements Serializable{
     private int dia;
     private int mes;
     private int ano;

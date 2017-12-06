@@ -36,8 +36,10 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuItemFechar = new javax.swing.JMenuItem();
         jMenuLivro = new javax.swing.JMenu();
+        jMenuItemBuscar = new javax.swing.JMenuItem();
         jMenuItemListar = new javax.swing.JMenuItem();
         jMenuCliente = new javax.swing.JMenu();
+        jMenuItemExcluirConta = new javax.swing.JMenuItem();
         jMenuItemAlterarDados = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
 
@@ -81,8 +83,17 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         jMenuLivro.setText("Livros");
         jMenuLivro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
+        jMenuItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteDeIcones/book_go.png"))); // NOI18N
+        jMenuItemBuscar.setText("Buscar");
+        jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBuscarActionPerformed(evt);
+            }
+        });
+        jMenuLivro.add(jMenuItemBuscar);
+
         jMenuItemListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteDeIcones/book_open.png"))); // NOI18N
-        jMenuItemListar.setText("Realizar Emprestimo");
+        jMenuItemListar.setText("Listar");
         jMenuItemListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemListarActionPerformed(evt);
@@ -95,6 +106,15 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         jMenuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteDeIcones/user.png"))); // NOI18N
         jMenuCliente.setText("Usuário");
         jMenuCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        jMenuItemExcluirConta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteDeIcones/user_delete.png"))); // NOI18N
+        jMenuItemExcluirConta.setText("Excluir Conta");
+        jMenuItemExcluirConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExcluirContaActionPerformed(evt);
+            }
+        });
+        jMenuCliente.add(jMenuItemExcluirConta);
 
         jMenuItemAlterarDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteDeIcones/user_edit.png"))); // NOI18N
         jMenuItemAlterarDados.setText("Alterar Dados");
@@ -117,6 +137,10 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void jMenuItemExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirContaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemExcluirContaActionPerformed
+
     private void jMenuItemFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFecharActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemFecharActionPerformed
@@ -124,6 +148,10 @@ public class TelaInicialCliente extends javax.swing.JFrame {
     private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemListarActionPerformed
+
+    private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +195,8 @@ public class TelaInicialCliente extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCliente;
     private javax.swing.JMenuItem jMenuItemAlterarDados;
+    private javax.swing.JMenuItem jMenuItemBuscar;
+    private javax.swing.JMenuItem jMenuItemExcluirConta;
     private javax.swing.JMenuItem jMenuItemFechar;
     private javax.swing.JMenuItem jMenuItemListar;
     private javax.swing.JMenuItem jMenuItemSair;

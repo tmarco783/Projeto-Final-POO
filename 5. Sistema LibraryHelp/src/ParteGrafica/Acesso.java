@@ -1,11 +1,13 @@
 package ParteGrafica;
 
+import java.io.Serializable;
+
 /**
  *Classe usada para criar um acesso para os usuários
  * atráves de login e senha.
  * @author Mathews
  */
-public class Acesso {
+public class Acesso implements Serializable{
     private String login;
     private String senha;
     
@@ -24,7 +26,7 @@ public class Acesso {
     public void setLogin(String login) {
         this.login = login;
     }
-    
+
     /**
      * Método que configura a senha de um usuário.
      * @param senha 
@@ -32,5 +34,14 @@ public class Acesso {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
+    /**
+     * Método que retorna a senha do usuário.
+     * @return String
+     */
+    public String getSenha() {
+        return senha;
+    }
+    
     
 }

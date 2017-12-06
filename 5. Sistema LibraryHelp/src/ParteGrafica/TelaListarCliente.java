@@ -5,6 +5,9 @@
  */
 package ParteGrafica;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mathews
@@ -32,11 +35,12 @@ public class TelaListarCliente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
-        jLabelRG = new javax.swing.JLabel();
-        jTextFieldRG = new javax.swing.JTextField();
         jButtonListar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabelCPF = new javax.swing.JLabel();
+        jButtonSair = new javax.swing.JButton();
+        jTextFieldCPF = new javax.swing.JTextField();
         TelaFundo = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -60,22 +64,19 @@ public class TelaListarCliente extends javax.swing.JInternalFrame {
         jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("Nome");
         jPanel1.add(jLabelNome);
-        jLabelNome.setBounds(30, 20, 40, 17);
+        jLabelNome.setBounds(20, 10, 40, 30);
         jPanel1.add(jTextFieldNome);
-        jTextFieldNome.setBounds(80, 20, 230, 30);
-
-        jLabelRG.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelRG.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRG.setText("RG");
-        jPanel1.add(jLabelRG);
-        jLabelRG.setBounds(340, 20, 21, 30);
-        jPanel1.add(jTextFieldRG);
-        jTextFieldRG.setBounds(380, 20, 110, 30);
+        jTextFieldNome.setBounds(20, 40, 260, 30);
 
         jButtonListar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonListar.setText("Listar");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonListar);
-        jButtonListar.setBounds(420, 70, 71, 30);
+        jButtonListar.setBounds(20, 80, 71, 30);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,7 +86,7 @@ public class TelaListarCliente extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "Nome", "RG", "Email"
+                "Nome", "CPF", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -100,6 +101,24 @@ public class TelaListarCliente extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(0, 140, 530, 250);
+
+        jLabelCPF.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelCPF.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCPF.setText("CPF");
+        jPanel1.add(jLabelCPF);
+        jLabelCPF.setBounds(300, 20, 28, 20);
+
+        jButtonSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonSair.setText("SAIR");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonSair);
+        jButtonSair.setBounds(440, 80, 73, 30);
+        jPanel1.add(jTextFieldCPF);
+        jTextFieldCPF.setBounds(300, 40, 200, 30);
 
         TelaFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/4.png"))); // NOI18N
         jPanel1.add(TelaFundo);
@@ -118,19 +137,60 @@ public class TelaListarCliente extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 545, 414);
     }// </editor-fold>//GEN-END:initComponents
+    
+    Biblioteca biblioteca = Biblioteca.getInstancia();
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
+        // TODO add your handling code here:
+        int aux = 0;
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        Object romData[] = new Object[3];
+        
+        model.setNumRows(0);
+        if(jTextFieldNome.getText().length() > 0 || jTextFieldCPF.getText().length() > 0){           
+            for(int i=0; i<biblioteca.getClientes().size(); i++){
+                if(biblioteca.clientes.get(i).getNome().equalsIgnoreCase(jTextFieldNome.getText()) || biblioteca.clientes.get(i).getCpf().equalsIgnoreCase(jTextFieldCPF.getText()) ){
+                    romData[0] = biblioteca.clientes.get(i).getNome();
+                    romData[1] = biblioteca.clientes.get(i).getCpf();
+                    romData[2] = biblioteca.clientes.get(i).getEmail();
+                    model.addRow(romData); 
+                    aux++;
+                }
+            }  
+            if(aux==0){
+            mensagemWarning("USUÁRIO NÃO CADASTRADO!!!");
+            }
+        }else{
+            for(int i=0; i<biblioteca.getClientes().size(); i++){
+                romData[0] = biblioteca.clientes.get(i).getNome();
+                romData[1] = biblioteca.clientes.get(i).getCpf();
+                romData[2] = biblioteca.clientes.get(i).getEmail();
+                model.addRow(romData);              
+            }
+        }
+        
+    }//GEN-LAST:event_jButtonListarActionPerformed
 
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonSairActionPerformed
+
+    public void mensagemWarning(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem, "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TelaFundo;
     private javax.swing.JButton jButtonListar;
+    private javax.swing.JButton jButtonSair;
+    private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelRG;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldRG;
     // End of variables declaration//GEN-END:variables
 }

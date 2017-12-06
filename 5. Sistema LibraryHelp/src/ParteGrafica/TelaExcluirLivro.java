@@ -34,7 +34,7 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jTextFieldTitulo = new javax.swing.JTextField();
         jButtonExcluir = new javax.swing.JButton();
-        jButtonVer = new javax.swing.JButton();
+        jButtonListar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -62,15 +62,15 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
         jPanel1.add(jButtonExcluir);
         jButtonExcluir.setBounds(250, 60, 90, 30);
 
-        jButtonVer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonVer.setText("Listar");
-        jButtonVer.addActionListener(new java.awt.event.ActionListener() {
+        jButtonListar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonListar.setText("Listar");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVerActionPerformed(evt);
+                jButtonListarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonVer);
-        jButtonVer.setBounds(90, 60, 90, 30);
+        jPanel1.add(jButtonListar);
+        jButtonListar.setBounds(90, 60, 90, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,7 +132,7 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
     
     Biblioteca biblioteca = Biblioteca.getInstancia();
-    private void jButtonVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerActionPerformed
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
         // TODO add your handling code here:
         int aux = 0;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -164,7 +164,7 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
                 model.addRow(romData);              
             }
         }   
-    }//GEN-LAST:event_jButtonVerActionPerformed
+    }//GEN-LAST:event_jButtonListarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -179,7 +179,7 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel FundoTela;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonExcluir;
-    private javax.swing.JButton jButtonVer;
+    private javax.swing.JButton jButtonListar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

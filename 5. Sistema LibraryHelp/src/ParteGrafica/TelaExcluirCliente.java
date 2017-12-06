@@ -5,6 +5,9 @@
  */
 package ParteGrafica;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mathews
@@ -30,12 +33,12 @@ public class TelaExcluirCliente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
-        jLabelRG = new javax.swing.JLabel();
-        jTextFieldRG = new javax.swing.JTextField();
-        jButtonVer = new javax.swing.JButton();
+        jButtonListar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabelCPF = new javax.swing.JLabel();
+        jTextFieldCPF = new javax.swing.JTextField();
         TelaFundo = new javax.swing.JLabel();
 
         setClosable(true);
@@ -46,27 +49,35 @@ public class TelaExcluirCliente extends javax.swing.JInternalFrame {
         jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("Nome");
         jPanel1.add(jLabelNome);
-        jLabelNome.setBounds(20, 20, 50, 30);
+        jLabelNome.setBounds(30, 10, 50, 30);
+
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldNome);
-        jTextFieldNome.setBounds(70, 20, 260, 30);
+        jTextFieldNome.setBounds(30, 40, 270, 30);
 
-        jLabelRG.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelRG.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRG.setText("RG");
-        jPanel1.add(jLabelRG);
-        jLabelRG.setBounds(350, 30, 21, 17);
-        jPanel1.add(jTextFieldRG);
-        jTextFieldRG.setBounds(380, 20, 130, 30);
-
-        jButtonVer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonVer.setText("Ver");
-        jPanel1.add(jButtonVer);
-        jButtonVer.setBounds(70, 60, 80, 30);
+        jButtonListar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonListar.setText("Listar");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonListar);
+        jButtonListar.setBounds(30, 80, 80, 30);
 
         jButtonExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonExcluir);
-        jButtonExcluir.setBounds(430, 60, 80, 30);
+        jButtonExcluir.setBounds(430, 80, 80, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,6 +103,14 @@ public class TelaExcluirCliente extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(0, 130, 530, 260);
 
+        jLabelCPF.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelCPF.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCPF.setText("CPF");
+        jPanel1.add(jLabelCPF);
+        jLabelCPF.setBounds(330, 20, 30, 17);
+        jPanel1.add(jTextFieldCPF);
+        jTextFieldCPF.setBounds(320, 40, 190, 30);
+
         TelaFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/4.png"))); // NOI18N
         jPanel1.add(TelaFundo);
         TelaFundo.setBounds(0, 0, 530, 390);
@@ -109,18 +128,67 @@ public class TelaExcluirCliente extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 545, 414);
     }// </editor-fold>//GEN-END:initComponents
+    
+    Biblioteca biblioteca = Biblioteca.getInstancia();
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
+        // TODO add your handling code here:
+        int aux = 0;
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object romData[] = new Object[5];
+        
+        model.setNumRows(0);
+        if(jTextFieldNome.getText().length() > 0 || jTextFieldCPF.getText().length() > 0){
+            for(int i=0; i <biblioteca.getClientes().size(); i++ ){
+                if(biblioteca.clientes.get(i).getNome().equalsIgnoreCase(jTextFieldNome.getText()) || biblioteca.clientes.get(i).getCpf().equalsIgnoreCase(jTextFieldCPF.getText())){
+                    romData[0] = biblioteca.clientes.get(i).getNome();
+                    romData[1] = biblioteca.clientes.get(i).getCpf();
+                    romData[2] = biblioteca.clientes.get(i).getEmail();
+                    model.addRow(romData); 
+                    aux++;
+                }
+            }
+            if(aux==0){
+                mensagemWarning("CLIENTE NÃO CADASTRADO!!!");
+            }
+        }else{
+            for(int i=0; i <biblioteca.getClientes().size(); i++ ){
+                romData[0] = biblioteca.clientes.get(i).getNome();
+                romData[1] = biblioteca.clientes.get(i).getCpf();
+                romData[2] = biblioteca.clientes.get(i).getEmail();
+                model.addRow(romData);              
+            }
+        }   
+        
+    }//GEN-LAST:event_jButtonListarActionPerformed
+
+    
+    public void mensagemWarning(String mensagem){
+         JOptionPane.showMessageDialog(null, mensagem, "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+         int posicao = jTable1.getSelectedRow();
+         biblioteca.clientes.remove(posicao);
+         ((DefaultTableModel) jTable1.getModel()).removeRow(jTable1.getSelectedRow());
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TelaFundo;
     private javax.swing.JButton jButtonExcluir;
-    private javax.swing.JButton jButtonVer;
+    private javax.swing.JButton jButtonListar;
+    private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelRG;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldRG;
     // End of variables declaration//GEN-END:variables
 }

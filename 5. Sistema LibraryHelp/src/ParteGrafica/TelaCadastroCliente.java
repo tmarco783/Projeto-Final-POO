@@ -136,7 +136,9 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
         int ok = 0;
         
         try{
-            cpf = getTextFieldData(jFormattedTextFieldCPF);
+            cpf = getTextFieldData(jFormattedTextFieldCPF);// coloca o valor do seu campo na variavel  
+            cpf = cpf.replace(".",""); // substitui o ponto por uma String vazia  
+            cpf = cpf.replace("-",""); // substitui o traço por uma String vazia  
             login = getTextFieldData(jTextFieldUsuario);
             senha = getTextFieldData(jPasswordFieldSenha);
             confirm = getTextFieldData(jPasswordFieldConfirmarSenha);

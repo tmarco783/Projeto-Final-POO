@@ -1,17 +1,28 @@
 package ParteGrafica;
 
+import java.io.Serializable;
+
 /**
- *Classe abstrata Pessoa
+ *
  * @author Mathews
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     protected String nome;
-    protected String rg;
     protected Data dataNasc;
     protected String sexo;
     protected String cpf;
     protected String telefoneFixo;
     protected String telefoneCelular; 
+    
+    public String getCpf(){
+        return cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    
+    
     
     
 }

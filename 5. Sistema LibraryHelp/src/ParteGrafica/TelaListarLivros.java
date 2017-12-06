@@ -5,6 +5,9 @@
  */
 package ParteGrafica;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -114,7 +117,7 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     Biblioteca biblioteca = Biblioteca.getInstancia();
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        // TODO add your handling code here:
+
         int aux = 0;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object romData[] = new Object[5];
@@ -131,10 +134,11 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
                     model.addRow(romData); 
                     aux++;
                 }
+                if(aux==0){
+                    mensagemWarning("NEM UM LIVRO CADASTRADO COM ESTE AUTOR!");
+                }
             }
-            if(aux==0){
-                mensagemWarning("NEM UM LIVRO CADASTRADO COM ESTE AUTOR!");
-            }
+            
         }else{
             for(int i=0; i <biblioteca.getLivros().size(); i++ ){
                 romData[0] = biblioteca.livros.get(i).getTitulo();

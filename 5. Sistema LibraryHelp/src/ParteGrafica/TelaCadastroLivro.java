@@ -146,8 +146,6 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
 
     private void jComboBoxAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAnoActionPerformed
         // TODO add your handling code here:
-        
-        jComboBoxAno.addItem("asdfasdf");
     }//GEN-LAST:event_jComboBoxAnoActionPerformed
     
     Biblioteca biblioteca = Biblioteca.getInstancia();
@@ -174,6 +172,7 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
                 Livro livro = new Livro(titulo, autor, edicao, editora, anoLancamento);
                 biblioteca.addLivro(livro);
                 mensagemSucesso("CADASTRO REALIZADO COM SUCESSO!!!");
+                biblioteca.salvarDadosLivro(titulo, autor, edicao, editora, anoLancamento);
                 dispose();
             }      
         }catch(FaltamDadosException ex) {

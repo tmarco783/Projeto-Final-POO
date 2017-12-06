@@ -3,7 +3,7 @@ package ParteGrafica;
 import java.util.ArrayList;
 
 /**
- *Classe responsável por fazer o relacionamento de empréstimos
+ *
  * @author Mathews
  */
 public class Emprestimo implements DevolucaoAtrasada{
@@ -14,13 +14,6 @@ public class Emprestimo implements DevolucaoAtrasada{
     private Cliente responsavel;
     
     
-    /**
-     * Método que faz o cálculo da multa de 
-     * empréstimos de acordo com os requisitos
-     * e retorna o valor da multa.
-     * @param data
-     * @return 
-     */
     @Override
     public double calculoMulta(Data data){
         if(dataDevolucao.getMes() >= data.getMes()){
